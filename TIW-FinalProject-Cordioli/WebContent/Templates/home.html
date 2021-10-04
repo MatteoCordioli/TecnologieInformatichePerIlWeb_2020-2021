@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	<meta charset="utf-8">
+	<title>TIW-Home page</title>
+	<style type="text/css"></style>
+	<link href="./CSS/CssDefault.css" type="text/css" rel="stylesheet"/>
+	<link href="./CSS/Css.css" type="text/css" rel="stylesheet"/>
+	</head>
+
+	<body >
+		<header>
+			<a href="HomePage">PlaylistMusicale</a>
+			<h1>Home page di 
+				<span th:text="${currUser.name}">Matteo</span></h1>	
+			<a href="Login">Logout</a>
+		</header>
+
+		<section class="playlistlist"> 	
+			<header class="newplaylist">	
+				<h2>Le mie playlist</h2>
+				
+				<details>
+					<summary class="buttonlike">Nuova</summary>
+					<form action="CreatePlaylist" method="post" id="NewPlaylistForm">
+	  					<label for="playlistname">nome:</label>
+	  					<input type="text" id="playlistname" name="playlistname" required>	  	  								
+	  				</form>
+	  				<button  type="submit" form="NewPlaylistForm" value="Submit">Salva</button>		
+				</details>
+				
+			</header>
+
+			<ul th:remove="all-but-first">											
+				<li th:each="playlist : ${playlists}">
+					<a href="https://www.w3schools.com/" 
+						th:href="@{/Playlist(idPlaylist=${playlist.idPlaylist})}"  
+						th:text="${playlist.namePlaylist} +' - ('+ ${playlist.date}+')'">Musica leggera
+					</a>
+				</li>
+  				<li><a href="https://www.w3schools.com/1">Cantautori italiani</a></li>
+  				<li><a href="https://www.w3schools.com/2">La traviata</a></li>
+  				<li><a href="https://www.w3schools.com/3">Tenori leggeri</a></li>
+  				<li><a href="https://www.w3schools.com/4">I 3 tenori in concerto</a></li>
+  				<li><a href="https://www.w3schools.com/5">Canti di Natale</a></li>  				
+			</ul>
+		</section>
+
+
+		<section class="newsong">
+			
+			<h2>Nuova canzone<span th:if="${newSongCreated}" class="errormsg"> salvata correttamente</span></h2>	
+
+			<form action="CreateSong" method="post" id="NewSongForm" enctype="multipart/form-data">
+  				<label for="SongTitle">titolo:</label>
+  				<input type="text" id="SongTitle" name="SongTitle" required>
+
+  				<label for="SongGenre">genere:</label>
+  					<select class="lookup" name="SongGenre" id="SongGenre" required>
+					  	<option value="" disabled selected hidden>Scegli genere</option>
+					  	<option value="Blues">Blues</option>
+					    <option value="Classica">Classica</option>
+					    <option value="Electronic">Electronic</option>
+					    <option value="Hip-Hop">Hip-Hop</option>
+					    <option value="Jazz">Jazz</option>
+					    <option value="Leggera">Leggera</option>			    
+					    <option value="Metal">Metal</option>
+					    <option value="Pop">Pop</option>
+					    <option value="Rap">Rap</option>
+				    	<option value="Rock">Rock</option>
+				  	</select>
+
+  				<label for="SongMusic">file musicale:</label>
+  				<input type="file" id="SongMusic" name="SongMusic" required>
+				<label for="AlbumTitleSelect">album:</label>
+					<select name="AlbumTitleSelect" id="AlbumTitleSelect"  required>
+						<option value="" disabled selected hidden>Scegli album</option>
+					
+						<option th:each="album :${albums}" th:value="${album.idAlbum}" th:text="${album.getMainInfo()}">Album1</option>
+					
+					</select>	  				
+  			</form>		
+			<button type="submit" form="NewSongForm" value="Submit">Salva</button>
+
+		</section>
+
+		<section class="newalbum">
+			
+			<h2>Nuovo album<span th:if="${newAlbumCreated}" class="errormsg"> salvato correttamente</span></h2>	
+
+			<form action="CreateAlbum" method="post" id="NewAlbumForm" enctype="multipart/form-data">  	
+				<label for="AlbumTitle">titolo:</label>
+  				<input type="text" id="AlbumTitle" name="AlbumTitle" required>			
+		  		<label for="AlbumSinger">interprete:</label>
+				<input type="text" id="AlbumSinger" name="AlbumSinger" required>
+				<label for="AlbumYear">anno pubblicazione:</label>
+				<input type="number" id="AlbumYear" name="AlbumYear" min="1900" max="2100" required>
+				<label for="AlbumCover">copertina:</label>
+				<input type="file" id="AlbumCover" name="AlbumCover" required>		  		
+		  	</form>
+		  	<button type="submit" form="NewAlbumForm" value="Submit">Salva</button>
+  				
+		</section>
+
+ 	</body>
+
+</html>

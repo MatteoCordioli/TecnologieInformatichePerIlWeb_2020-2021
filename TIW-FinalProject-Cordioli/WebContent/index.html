@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	<meta charset="utf-8">
+	<title>TIW-Accesso</title>
+	<style type="text/css"></style>
+	<link href="./CSS/CssDefault.css" type="text/css" rel="stylesheet"/>
+	<link href="./CSS/Css.css" type="text/css" rel="stylesheet"/>
+	</head>
+
+	<body >
+		<header class="logo"> 		
+			<h1>Playlist musicale</h1>
+		</header>
+
+		<section class="accesso">
+			
+			<h2>Accedi alla tua area personale</h2>			
+
+			<form action="Login" method="post" id="AccessForm">
+  				<label for="emailLogIn">email:</label>
+  				<input type="email" id="emailLogIn" name="emailLogIn" th:value="${currUser.email}" required> 
+  				<label for="passwordLogIn">password:</label>
+  				<input type="password" id="passwordLogIn" name="passwordLogIn"  minlength="3" required>
+			</form>		
+			<button type="submit" form="AccessForm" value="Submit">Accedi</button>
+			
+			<h2>Non sei un nostro utente e vuoi accedere ai nostri servizi?</h2>
+
+			<details>
+				<summary class="buttonlike">Registrati</summary>
+
+				<form action="CreateUser" method="post" id="RegistrationForm">
+  					<label for="useremail">email:</label>
+  					<input type="email" id="useremail" name="useremail" required>	
+  					<label for="userpswd1">password:</label>
+	  				<input type="password" id="userpswd1" name="userpswd1"  minlength="3" required>
+	  				<label for="userpswd2">ripeti password:</label>
+	  				<input type="password" id="userpswd2" name="userpswd2"  minlength="3" required> 
+  					<label for="username">nome:</label>
+  					<input type="text" id="username" name="username" required>	   								
+  				</form>
+  				<button  type="submit" form="RegistrationForm" value="Submit">Salva</button>	
+			</details>
+
+			<h2 th:if="${newUserCreated}" class="errormsg">Utente registrato!</h2>
+			<h2 th:if="${logInError}" class="errormsg">Issue finding your account!</h2>
+ 		</section>
+	</body>
+
+</html>

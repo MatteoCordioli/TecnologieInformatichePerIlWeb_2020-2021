@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	<meta charset="utf-8">
+	<title>TIW-Playlist</title>
+	<style type="text/css"></style>
+	<link href="./CSS/CssDefault.css" type="text/css" rel="stylesheet"/>
+	<link href="./CSS/Css.css" type="text/css" rel="stylesheet"/>
+	</head>
+
+	<body >
+		<header>
+			<a href="HomePage">PlaylistMusicale</a>
+			<h1>Playlist: 
+				<span th:text="${playlist.namePlaylist}">nome</span></h1>	
+			<a href="Login">Logout</a>
+		</header>
+		
+		<section class="songsinplaylist" th:if="${#lists.isEmpty(songInPlaylist)}"> 	
+			<section class="nosong" >
+				<h2>Nessuna canzone presente in questa playlist!</h2>
+			</section>
+		</section>
+	
+		<section class="songsinplaylist" th:if="${not #lists.isEmpty(songInPlaylist)}">
+			<form th:if="${precButton}" action="PrecGroupOfSongs" method="post" id="Prec">
+				<button type="submit" form="Prec" value="Submit">&#9664</button>	
+			</form>
+			
+			<section class="songsboxes" th:remove="all-but-first">
+				<section class="song" th:each="song : ${songInPlaylist}">
+					<a href="https://www.w3schools.com/" th:href="@{/Player(idSong=${song.idSong})}">
+						<img src="../cover1.jpg" alt="Cover1" th:src="@{/GetCover/(img=${song.album.getImagePath()})}" >
+						<h3>
+							<span th:text="${song.album.getNameAlbum()}" th:remove="tag">Disney Girls</span>
+							<p>(<span th:text="${song.album.getYearPublication()}">1995</span>)</p>
+						</h3>
+						
+						<h2>
+							<span th:utext="${song.title}" th:remove="tag">Part of your world I can show you the world</span>
+							<p th:text="${song.album.getNameSinger()}">Ariana Grande</p>
+						</h2>
+					</a>
+				</section>
+				
+				<section class="song">
+					<a href="https://www.w3schools.com/">
+						<img src="../cover2.jpg" alt="Cover2" >
+						<h3>Disney Villains
+							<p>( <span>2010</span> )</p>
+						</h3>
+						<h2>Cruella de Vil
+							<p>Ariana Grande</p>
+						</h2>
+					</a>
+				</section>
+					
+				<section class="song">
+					<a href="https://www.w3schools.com/">
+						<img src="../cover3.jpg" alt="Cover3" >				
+						<h3>Disney Love
+							<p>( <span>1987</span> )</p>
+						</h3>					
+						<h2>Tale as old as time
+							<p>Ariana Grande</p>
+						</h2>
+					</a>
+				</section>
+				
+				<section class="song">
+					<a href="https://www.w3schools.com/">
+						<img src="../cover4.jpg" alt="Cover4" >
+						<h3>Disney Songs for Everybody who loves them
+							<p>( <span>2002</span> )</p>
+						</h3>				
+						<h2>Prince Ali
+							<p>Ariana Grande</p>	
+						</h2>	
+					</a>						
+				</section>
+					
+				<section class="song">
+					<a href="https://www.w3schools.com/">	
+						<img src="../cover5.jpg" alt="Cover5" >
+						<h3>Christmas songs for children and adults for merry days
+							<p>( <span>1945</span> )</p>
+						</h3>				
+						<h2>Una volta sono stata un po' cattiva una strega mi credevo in verita'
+							<p>Coro Antoniano</p>
+						</h2>	
+					</a>			
+				</section>
+			</section>
+
+			<form th:if="${nextButton}" action="NextGroupOfSongs" method="post" id="Succ">
+				<button type="submit" form="Succ" value="Submit">&#9654</button>	
+			</form>
+
+		</section>
+
+		<section class="songslist"> 
+			<header>
+				<h2>Le mie canzoni</h2>
+			</header>
+				
+			<section class="nosong" th:if="${#lists.isEmpty(songsNotInPlaylist)}" >
+				<h2>Nessuna canzone disponibile!</h2>
+			</section>
+
+			<ul th:if="${not #lists.isEmpty(songsNotInPlaylist)}" th:remove="all-but-first">
+				<li th:each="song : ${songsNotInPlaylist}">
+					<details>
+						<summary>
+							<span th:text="${song.title}">canzone1</span> - 
+							<span th:text="${song.album.getNameAlbum()}">album1</span> - 
+							<span th:text="${song.album.getNameSinger()}">album1</span>
+						</summary>
+						<form th:action="@{/AddSongToPlaylist(songid=${song.idSong})}" method="post" id="AddSong">
+							<button  type="submit" value="Submit">Aggiungi questa canzone alla playlist</button>					
+		  				</form>
+		  					
+					</details>	
+				</li>
+
+				<li>
+					<details>
+						<summary>
+							<span>canzone2</span>
+							<span>album2</span>
+						</summary>
+						<form method="post" id="AddSong">
+		  					<button  type="submit" form="AddSong" value="Submit">Aggiungi questa canzone alla playlist</button>						
+		  				</form>
+		  				
+					</details>	
+				</li>
+
+				<li>
+					<details>
+						<summary>
+							<span>canzone3</span>
+							<span>album3</span>
+						</summary>
+						<form method="post" id="AddSong">
+		  					<button  type="submit" form="AddSong" value="Submit">Aggiungi questa canzone alla playlist</button>						
+		  				</form>
+		  				
+					</details>	
+				</li>
+			</ul>
+								
+			
+		</section>
+
+ 	</body>
+
+</html>

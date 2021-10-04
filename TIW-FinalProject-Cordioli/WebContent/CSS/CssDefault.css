@@ -1,0 +1,177 @@
+@import url("CssReset.css");		/*per resettare eventuali parametri fissati dal browser e portarli ai miei valori di default*/
+
+@font-face {
+  font-family: font_titoli_h1;
+  src: url("../Grafica/GiveMeSomeSugar.ttf");
+}
+
+@font-face {
+  font-family: font_titoli_h2;
+  src: url("../Grafica/HoboStd.otf");
+}
+
+:root {
+  	--sfondo-scuro: rgb(75,75,75);
+  	--sfondo-chiaro: rgb(220,220,220);
+  	--sfondo-chiarissimo: rgb(240,240,240);
+	--ombra-bottone: rgb(75,75,75);
+	--colore-arancio:rgb(241,90,36);
+	--colore-azzurro: rgb(62,155,208);
+	--colore-nero: rgb(0,0,0);
+	--colore-bianco: rgb(255,255,255);
+	/*--font-titoli-h1: "give me some sugar";
+	--font-titoli-h2: "Hobo Std";*/
+	--url-cuffiette-nere: url('../Grafica/CuffietteNere.png');
+	--url-cuffiette-arancio: url('../Grafica/CuffietteArancio.png');
+	--url-cuffiette-azzurre: url('../Grafica/CuffietteAzzurre.png');
+	--url-cuffie: url("../Grafica/Cuffie.png");
+}
+
+/*------------- GENERALE -----------*/
+
+body { 	
+	background-color: var(--sfondo-scuro);	
+	color: var(--colore-nero);		
+	font-family: "Arial", sans-serif;	
+}
+
+header {
+	/*border: solid 2px red;*/
+	float: left;
+	width: 100%;
+}
+
+h1{
+	color: var(--colore-arancio);
+	font-family: font_titoli_h1, sans-serif;
+	font-weight: bolder; 
+	font-size: 3em;	
+	text-align: center; 
+	margin-top: 1%;				
+	margin-bottom: 2%;
+   	float: left;
+   	width: 74%;/*81*/
+}
+
+h2 {								/*titoli delle diverse box per liste/inserimento*/
+	color: var(--colore-azzurro);
+	/*font-family: font_titoli_h2, sans-serif;*/
+	font-size: 1.2em;
+	font-weight: bold; 	
+	text-align: left;
+}
+
+header h2 {							/*titoli delle box che contengono di seguito una lista*/							
+	margin-left: 5%;
+}
+
+h3{
+	text-align: center;	
+	font-size: 1.2em;
+	font-weight: bold;
+	height: 23%;
+}
+
+button {					/*il default e' om per tutte le form di inserimento*/
+  font-size: 1.2em;
+  text-align: center;
+  padding:	1% 1%;		
+  cursor: pointer;
+  color: var(--colore-bianco);
+  background-color: var(--colore-arancio);
+  box-shadow: 5px 5px var(--ombra-bottone);
+  border-radius: 5px;
+  float: right;
+  margin-top: 5%;
+  margin-right: 5%;
+}
+
+section {
+	background-color: var(--sfondo-chiaro);	
+	border: solid 2px var(--colore-arancio);
+	border-radius: 10px;
+	box-shadow: 5px 5px var(--colore-nero);	
+	overflow: auto;
+}
+
+label {
+	display: block;
+}
+
+input[type="text"], input[type="file"], 
+input[type="email"], select {						/*no: password, numero, scelta file*/
+	width: 95%;
+	height: 3vh;
+}
+
+.lookup {	/*override della larghezza std degli elementi selct (vedi specifica precedente, che DEVE restare sopra a questa)*/
+	width: 35%;
+}
+
+input, select {
+  	font-size: 0.9em;
+}
+
+input::-webkit-outer-spin-button,			/*levo le freccette dal campo numerico AnnoPubblicazione*/
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+a:link, a:visited {				/*link non aperto e link visitato*/
+  color: var(--colore-nero);
+}
+
+a:hover, a:active {				/*link al passaggio del mouse*/
+  color: var(--colore-arancio);
+}
+
+header a:link, header a:visited {	/*simulazione dei bottoni Home e Logout*/
+	color: var(--colore-arancio);
+	float: left;
+	margin-top: 1%;
+	font-family: font_titoli_h1;
+	font-size: 1.5em;
+	width: 12%;	
+}
+
+header a[href*="HomePage"]:link, header a[href*="HomePage"]:visited {
+	width: 12%;	
+	margin-left: 1%;
+	padding-left: 40px;
+	background-image: var(--url-cuffiette-nere), var(--url-cuffiette-azzurre), var(--url-cuffiette-arancio);
+  	background-position: bottom 1px left 0px, bottom 4px left 10px, bottom 6px left 20px;
+   	background-repeat: no-repeat;
+   	clear: both;
+}
+
+header a:hover, header a:active {
+	font-weight: bolder;
+}
+
+summary {									
+	cursor: pointer;
+	outline: none; 							/*no contorno*/
+	user-select: none;						/*non seleziono il testo se faccio doppio click*/						
+}
+
+summary.buttonlike{							/*le prossime righe simulano il bottone, parametri di look identici!*/
+	float: right;
+	color: var(--colore-bianco);			
+	background-color: var(--colore-arancio);
+	border-radius: 5px;	
+	box-shadow: 5px 5px var(--ombra-bottone);
+	padding: 1% 1%;
+	font-size: 1.2em;
+	list-style: none;						/*non voglio la freccetta standard di apertuta/chiusura se simulo un bottone*/
+}	
+
+ ul {																						
+	overflow: auto;
+	list-style-position: inside;
+}
+
+li { 														
+	border-bottom: 1px solid var(--colore-azzurro);
+}
+

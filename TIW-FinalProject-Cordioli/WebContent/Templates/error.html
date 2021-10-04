@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	<meta charset="utf-8">
+	<title>TIW-ERROR</title>
+	<style type="text/css"></style>
+	<link href="./CSS/CssDefault.css" type="text/css" rel="stylesheet"/>
+	<link href="./CSS/Css.css" type="text/css" rel="stylesheet"/>
+	</head>
+
+	<body >
+		<header>
+			<a href="HomePage">PlaylistMusicale</a>
+			<h1>OPSSSSSSSSS!</h1>	
+			<a href="Login">Logout</a>
+		</header>
+				
+		<section class="infoerror" >
+			<h2>ERROR <span th:text="${code}">404</span></h2>
+			<h3 th:text="${message}">Problema accesso db!</h3>
+		</section>
+	
+
+ 	</body>
+
+</html>

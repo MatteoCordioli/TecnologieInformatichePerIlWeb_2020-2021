@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	<meta charset="utf-8">
+	<title>TIW-Player</title>
+	<style type="text/css"></style>
+	<link href="./CSS/CssDefault.css" type="text/css" rel="stylesheet"/>
+	<link href="./CSS/Css.css" type="text/css" rel="stylesheet"/>
+	</head>
+
+	<body >
+		<header>
+			<a href="HomePage">PlaylistMusicale</a>
+			<h1>Player</h1>	
+			<a href="Login">Logout</a>
+		</header>
+		
+		<section class="playsong"> 	
+
+			<section class="infoalbum">
+				<img src="../cover3.jpg" th:src="@{/GetCover/(img=${song.album.getImagePath()})}" alt="Cover1" >
+				<h3>
+					<span th:text="${song.album.getNameAlbum()}" th:remove="tag">Christmas songs for children and adults for merry days</span>
+					<p>(<span th:text="${song.album.getYearPublication()}">1995</span>)</p> <!-- il p lo ho aggiunto io -->
+				</h3>
+			</section>
+			
+			<section class="infosong">
+				<h2>
+					<span th:utext="${song.title}" th:remove="tag">Part of your world I can show you the world </span>
+					
+					<p th:text="${song.album.getNameSinger()}">Ariana Grande</p> <!-- il p lo ho messo io prima c'era uno span-->
+					
+					<p th:text="${song.genre}">Songs for Children</p>
+				</h2>
+			</section> 			
+
+		</section>
+
+		<audio controls>
+		  	<source src="Aladdin.mp3" th:src="@{/GetSong/(songPath=${song.songPath})}" type="audio/mpeg">
+			Your browser does not support the audio element.
+		</audio>
+ 	</body>
+
+</html>
