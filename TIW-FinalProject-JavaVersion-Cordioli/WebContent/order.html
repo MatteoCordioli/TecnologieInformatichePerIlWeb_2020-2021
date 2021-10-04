@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="utf-8">
+		<title>TIW-Ordina</title>
+		<style type="text/css"></style>
+		<link href="./CSS/CssDefault.css" type="text/css" rel="stylesheet"/>
+		<link href="./CSS/Css.css" type="text/css" rel="stylesheet"/>
+		<link href="./CSS/CssJS.css" type="text/css" rel="stylesheet"/>
+		<script src="./JS/utils.js" charset="utf-8" defer></script>
+		<script src="./JS/sortManager.js" charset="utf-8" defer></script>
+	</head>
+
+	<body >
+		<header>
+			<a href="#" id="HomePageButton">PlaylistMusicale</a>
+			<h1>Ordinamento playlist: 
+				<span id="namePlaylist">nome</span></h1>	
+			<a href="#" id="LogoutButton">Logout</a>
+		</header>
+		
+
+		<section class="songslist"> 
+			<header>
+				<h2>Le mie canzoni<span id="sortNotify" class="errormsg"> salvata correttamente</span></h2>
+				
+				<button id="saveOrder">Ordina</button>
+				</header>
+				
+			
+			<ul id="songListContainer">
+				
+			</ul>
+			<form id="orderForm">
+					<input type="text" id="json" name="json" hidden>
+				</form>			
+			
+		</section>
+
+ 	</body>
+
+</html>

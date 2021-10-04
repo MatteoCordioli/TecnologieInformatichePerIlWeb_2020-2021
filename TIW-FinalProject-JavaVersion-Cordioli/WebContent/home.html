@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	<meta charset="utf-8">
+	<title>TIW-Home page</title>
+	<style type="text/css"></style>
+	<link href="./CSS/CssDefault.css" type="text/css" rel="stylesheet"/>
+	<link href="./CSS/Css.css" type="text/css" rel="stylesheet"/>
+	<link href="./CSS/CssJS.css" type="text/css" rel="stylesheet"/>
+	<script src="./JS/utils.js" charset="utf-8" defer></script>
+	<script src="./JS/playlistManager.js" charset="utf-8" defer></script>
+
+	</head>
+
+	<body >
+		<header>
+			<a href="#" id="HomePageButton">PlaylistMusicale</a>
+			<h1>Home page di 
+				<span id="nameUser" >Matteo</span></h1>	
+			<a href="#" id="LogoutButton">Logout</a>
+		</header>
+
+		<section class="playlistlist"> 	
+			<header class="newplaylist">			
+				<h2>Le mie playlist<span id="playlistNotify" class="errormsg"> salvata correttamente</span></h2>
+
+				<button id="ordersongs">Ordina</button>	
+
+				<details>
+
+					<summary class="buttonlike">Nuova</summary>
+					<form action="#" id="NewPlaylistForm" id="NewPlaylistForm">
+	  					<label for="playlistname">nome:</label>
+	  					<input type="text" id="playlistname" name="playlistname" required>					
+	  				</form>
+	  					<button id="addPlaylistButton" value="SavePlaylist">Salva</button>  
+				</details>
+				
+			</header>
+
+			<ul id="playlistList">											
+				  				
+			</ul>
+		</section>
+
+
+		<section class="songsinplaylist" >
+
+			<section id="alertSongsList" class="nosong" >
+				<h2>Nessuna canzone in questa playlist!</h2>
+			</section>
+
+			<button id="precButton" value="prec">&#9664</button>	
+			
+			<section id="songsList" class="songsboxes" >
+			
+			</section>
+
+			<button id="nextButton" value="next">&#9654</button>	
+		</section>
+
+
+		<section class="playsong"> 
+			 
+			<audio id="audioSongInfo" controls>
+		  	<source id="audioSourceSongInfo" src="" type="audio/mpeg">
+			Your browser does not support the audio element.
+			</audio>		
+
+		</section>
+
+
+		<section class="newsong">
+			
+			<h2>Nuova canzone<span id="songNotify" class="errormsg"> salvata correttamente</span></h2>	
+
+			<form action="#" id="NewSongForm" enctype="multipart/form-data">
+  				<label for="SongTitle">titolo:</label>
+  				<input type="text" id="SongTitle" name="SongTitle" required>
+
+  				<label for="SongGenre">genere:</label>
+  					<select class="lookup" name="SongGenre" id="SongGenre" required>
+					  	<option value="" disabled selected hidden>Scegli genere</option>
+					  	<option value="Blues">Blues</option>
+					    <option value="Classica">Classica</option>
+					    <option value="Electronic">Electronic</option>
+					    <option value="Hip-Hop">Hip-Hop</option>
+					    <option value="Jazz">Jazz</option>
+					    <option value="Leggera">Leggera</option>			    
+					    <option value="Metal">Metal</option>
+					    <option value="Pop">Pop</option>
+					    <option value="Rap">Rap</option>
+				    	<option value="Rock">Rock</option>
+				  	</select>
+
+  				<label for="SongMusic">file musicale:</label>
+  				<input type="file" id="SongMusic" name="SongMusic" required>
+				<label for="AlbumTitleSelect">album:</label>
+					<select name="AlbumTitleSelect" id="AlbumTitleSelect"  required>
+						<option value="" disabled selected hidden>Scegli album</option>
+					</select>	  				
+				<button id="addSongButton" value="SaveSong">Salva</button>
+  			</form>		
+		</section>
+
+
+		<section class="newalbum">
+			<h2>Nuovo album<span id="albumNotify" class="errormsg"> salvato correttamente</span></h2>	
+
+			<form action="#"  id="NewAlbumForm" enctype="multipart/form-data">  	
+				<label for="AlbumTitle">titolo:</label>
+  				<input type="text" id="AlbumTitle" name="AlbumTitle" required>			
+		  		<label for="AlbumSinger">interprete:</label>
+				<input type="text" id="AlbumSinger" name="AlbumSinger" required>
+				<label for="AlbumYear">anno pubblicazione:</label>
+				<input type="number" id="AlbumYear" name="AlbumYear" min="1900" max="2100" required>
+				<label for="AlbumCover">copertina:</label>
+				<input type="file" id="AlbumCover" name="AlbumCover" required>	
+				<button id="addAlbumButton" value="SaveAlbum">Salva</button>	  		
+		  	</form>		
+		</section>
+
+
+		<section class="songslist"> 
+			<header>
+				<h2>Le mie canzoni<span id="songNotInPlaylistNotify" class="errormsg"> aggiunto corretamente</span></h2>
+			</header>
+				
+			<section id="songNotInPlaylistAlert" class="nosong" >
+				<h2>Nessuna canzone disponibile!</h2>
+			</section>
+
+			<ul id="songNotInPlaylist">
+				
+			</ul>
+		</section>
+
+ 	</body>
+
+</html>

@@ -1,0 +1,82 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+* {					/*mia variante*/
+	box-sizing: border-box;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, button, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, 
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	/*border: 0;*/
+	border: 0px solid;		/*mia variante*/
+	/*font-size: 100%;*/
+	font-size: 1em;			/*mia variante*/
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote::before, blockquote::after,
+q::before, q::after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a					/*mia versione*/
+	{text-decoration: none;
+	 outline: none;
+}
+
+/*per chrome che altrimenti mette bordo*/
+/*per IE8  che altrimenti mette riquadro tratteggiato sui bottoni premuti*/
+/*per Firefox si interviene sui bordi, quindi nel css DOPO questa definizione*/
+input:focus	{
+	outline: none;	
+}
+
+/*mia versione: problema in chrome che cambia colore se autocomplete di un campo e NON permette di modificare il background degli autofil!!!!!!
+trucco: creo un'ombra interna e grande del colore che mi serve!*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+ 	/*border: 1px solid red;
+  	-webkit-text-fill-color: red;*/
+  	border: 1px solid black;
+  	-webkit-box-shadow: 0 0 0px 1000px white inset;
+  	transition: background-color 5000s ease-in-out 0s; 	
+}
